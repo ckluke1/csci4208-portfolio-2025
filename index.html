@@ -1,23 +1,100 @@
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="CSCI 4208 Portfolio">
+    <meta name="author" content="Claude Luke">
     <title>CSCI 4208 Portfolio</title>
+    <link rel="icon" href="favicon.png">
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+
+        body {
+            background-color: #333333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            line-height: 180%;
+            color: #F0F0F0;
+            font-family: Arial, sans-serif;
+        }
+
+        #container {
+            padding: 3rem;
+            background-color: #0D47A1;
+            text-align: center;
+            border-radius: 10px;
+            max-width: 600px;
+            width: 90%;
+        }
+
+        h1 {
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+
+        h2 {
+            margin-top: 2rem;
+            font-size: 1.5rem;
+            border-bottom: none;
+            padding-bottom: 0.5rem;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 0.5rem 0;
+        }
+
+        a {
+            display: inline-block;
+            padding: 5px 10px;
+            background-color: #0D47A1;
+            text-decoration: none;
+            color: #F0F0F0;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        a:hover {
+            background-color: rgba(0, 0, 0, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            body {
+                font-size: 1rem;
+            }
+
+            #container {
+                padding: 1.5rem;
+            }
+        }
+    </style>
 </head>
+
 <body>
-    <h1>CSCI 4208 Portfolio</h1>
-    
-    <h2>Labs</h2>
-    <ul>
-        <li><a href="labs/Lab01/index.html">Lab 01 - HTML Crash Course</a></li>
-        <li><a href="labs/Lab02/index.html">Lab 02 - CSS: Crash Course</a></li>
-        <li><a href="labs/Lab03/index.html">Lab 03 - Bootstrap: Responsive Portfolio</a></li>
-        <li><a href="labs/Lab04/index.html">Lab 04 - JavaScript Basics: Hi–Lo Game</a></li>
-        <li><a href="labs/Lab05/index.html">Lab 05 - Phaser: Platformer Game</a></li>
-        <li><a href="labs/Lab06/index.html">Lab 06 - REST Client: Quiz Game + Leaderboard</a></li>
-    </ul>
-    
-    <h2>Projects</h2>
-    <ul>
-    </ul>
+    <div id="container">
+        <h1>CSCI 4208 Portfolio</h1>
+         
+        <ul>
+            <li><a href="labs/Lab01/index.html">Lab 01</a></li>
+            <li><a href="labs/Lab02/index.html">Lab 02</a></li>
+            <li><a href="labs/Lab03/index.html">Lab 03</a></li>
+            <li><a href="labs/Lab04/index.html">Lab 04</a></li>
+            <li><a href="labs/Lab05/index.html">Lab 05</a></li>
+            <li><a href="labs/Lab06/index.html">Lab 06</a></li>
+        </ul>
+    </div>
 </body>
+
 </html>
