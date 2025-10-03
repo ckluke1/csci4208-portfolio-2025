@@ -1,0 +1,140 @@
+<!-- This is the HTML for Lab 2: CSS Crash Course -->
+<html>
+  <head>
+    <title>CSS Crash Course</title>
+    <link rel="icon" href="assets/css-favicon.png" />
+    <link href="styles/styles.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Bangers" rel="stylesheet">
+  </head>
+
+  <body>
+    <h1>CSS Crash Course</h1>
+    <hr>
+
+    <!-- Goal 1: CSS Selectors -->
+    <h3>Goal 1: Selectors</h3>
+    <p>The body is set to gray using the element selector</p>
+    <p class="class-selector">This element was selected by its class name</p>
+    <p id="id-selector">This element was selected by its identifier</p>
+    <hr>
+
+    <!-- Goal 2: CSS Colors -->
+    <h3>Goal 2: Colors</h3>
+    <p class="bg-green text-green">This is green background with green text</p>
+    <p class="bg-blue text-red">This is blue background with red text</p>
+    <p class="bg-red text-blue">This is red background with blue text</p>
+    <p class="bg-dark text-white">This is black background with white text</p>
+    <hr>
+
+    <!-- Goal 3: CSS Fonts -->
+    <h3>Goal 3: Fonts</h3>
+    <p>
+      <span class="bold">This is bold text</span>
+      <span class="italic">This is italicized text</span>
+      <span class="large-text">This is large text</span>
+      <span class="small-text">This is small text</span>
+      <span class="arial-font">This is a browser font called arial</span>
+      <span class="bangers-font">This is a google font called bangers</span>
+    </p>
+    <hr>
+
+    <!-- Goal 4: CSS Spacing -->
+    <h3>Goal 4: Spacing</h3>
+    <div class="outline border">outline versus border on element</div>
+    <div class="margin outline border">margins are on the outside of the outline/border</div>
+    <div class="padding outline border">paddings are on the inside of the outline/border</div>
+    <div class="container outline">
+      <h4>Heading in a container</h4>
+      <img src="assets/400x100.png">
+      <p>Text in a container</p>
+    </div>
+    <hr>
+
+    <!-- Goal 5: CSS Sizing -->
+    <h3>Goal 5: Sizing</h3>
+    <p>This image is normally too big to fit in the viewport</p>
+    <img class="shrink-to-viewport" src="assets/4000x1000.png">
+    <p>This image already fits in the viewport so its not resized</p>
+    <img class="shrink-to-viewport" src="assets/400x100.png">
+    <p>This image fills the viewport width regardless if its too small or too big</p>
+    <img class="force-full-viewport" src="assets/400x100.png">
+    <hr>
+
+    <!-- Goal 6: CSS Backgrounds -->
+    <h3>Backgrounds</h3>
+    <p>The background is an image</p>
+    <div class="background-image container outline">
+      <h4>Heading on top of background image</h4>
+      <img src="assets/400x100.png">
+      <p>Text on top of background image</p>
+    </div>
+    <p>The background is an image & does not repeat</p>
+    <div class="background-image-without-repeat container outline">
+      <h4>Heading on top of background image</h4>
+      <img src="assets/400x100.png">
+      <p>Text on top of background image</p>
+    </div>
+    <p>The background is an image & is fixed in place</p>
+    <div class="background-image-fixed container outline">
+      <h4>Heading on top of background image</h4>
+      <img src="assets/400x100.png">
+      <p>Text on top of background image</p>
+    </div>
+    <p>The background is a gradient of colors</p>
+    <div class="background-gradient container outline">
+      <h4>Heading on top of background image</h4>
+      <img src="assets/400x100.png">
+      <p>Text on top of background image</p>
+    </div>
+    <hr>
+
+    <!-- Goal 7: CSS Customizations -->
+    <h3>Customizations</h3>
+    <div class="container">
+      <p><span class="bold">Anchors:</span> Removes the underline & changes to red on hover</p>
+      <a href="#">Hover over me!</a>
+
+      <p><span class="bold">Buttons:</span> Change background color to red on hover</p>
+      <button>Hover over me!</button>
+
+      <p><span class="bold">Lists:</span> Indent list items & replace bullets with images</p>
+      <ul>
+        <li>Item 1</li><li>Item 2</li><li>Item 3</li>
+      </ul>
+
+      <p><span class="bold">Tables:</span> Row padding and alternating colors</p>
+      <table>
+        <tr><th>1</th><th>2</th><th>3</th></tr>
+        <tr><td>4</td><td>5</td><td>6</td></tr>
+        <tr><td>7</td><td>8</td><td>9</td></tr>
+      </table>
+    </div>
+    <hr>
+
+    <!-- Goal 8: CSS Aligning with Flexbox -->
+    <h3>Aligning with Flexbox</h3>
+    Flexbox left:
+    <div class="left border"><img src="assets/square-tile.gif"><img src="assets/square-tile.gif"><img src="assets/square-tile.gif"></div>
+    Flexbox center:
+    <div class="center border"><img src="assets/square-tile.gif"><img src="assets/square-tile.gif"><img src="assets/square-tile.gif"></div>
+    Flexbox right:
+    <div class="right border"><img src="assets/square-tile.gif"><img src="assets/square-tile.gif"><img src="assets/square-tile.gif"></div>
+    Flexbox space-between:
+    <div class="justify-space-between border"><img src="assets/square-tile.gif"><img src="assets/square-tile.gif"><img src="assets/square-tile.gif"></div>
+    Flexbox space-around:
+    <div class="justify-space-around border"><img src="assets/square-tile.gif"><img src="assets/square-tile.gif"><img src="assets/square-tile.gif"></div>
+    Flexbox space-evenly:
+    <div class="justify-space-evenly border"><img src="assets/square-tile.gif"><img src="assets/square-tile.gif"><img src="assets/square-tile.gif"></div>
+    <hr>
+
+    <!-- Goal 9: CSS Aligning with Gridview -->
+    <h3>Aligning with Grid</h3>
+    Grid 1 column:
+    <div class="grid-1col border"><img src="assets/square-tile.gif"><img src="assets/square-tile.gif"><img src="assets/square-tile.gif"><img src="assets/square-tile.gif"></div>
+    Grid 2 columns:
+    <div class="grid-2col border"><img src="assets/square-tile.gif"><img src="assets/square-tile.gif"><img src="assets/square-tile.gif"><img src="assets/square-tile.gif"></div>
+    Grid 3 columns:
+    <div class="grid-3col border"><img src="assets/square-tile.gif"><img src="assets/square-tile.gif"><img src="assets/square-tile.gif"><img src="assets/square-tile.gif"></div>
+    <hr>
+  </body>
+</html>
