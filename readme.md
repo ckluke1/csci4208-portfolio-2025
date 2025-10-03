@@ -2,7 +2,7 @@
 
 > Personal progress page for CSCI4208. Keep this file updated as you complete labs, projects, and capstone milestones.
 
-- **Name:** <Your Name>
+- **Name:** <Claude Luke>
 - **Project Board (Project v2):** <paste your board URL here>
 - **Live Portfolio (GitHub Pages):** <https://ckluke1.github.io/csci4208-portfolio-2025/>
 
@@ -108,5 +108,6 @@
 ---
 
 <sub>Last updated: <!-- yyyy-mm-dd --> </sub>
+
 
 
