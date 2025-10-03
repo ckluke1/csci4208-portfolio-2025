@@ -33,7 +33,7 @@
 | Lab-04 — JavaScript Basics: Hi–Lo Game (MVP → MVC) [#4](https://github.com/ckluke1/csci4208-portfolio-2025/issues/4) | `lab-04` | closed |
 | Lab-05 (Alt) — JavaScript OOP + Phaser: Platformer Game [#9](https://github.com/ckluke1/csci4208-portfolio-2025/issues/9) | `lab-05` | closed |
 | Lab-05 — JavaScript OOP + Phaser: Dodger Game [#5](https://github.com/ckluke1/csci4208-portfolio-2025/issues/5) | `lab-05` | closed |
-| Lab-06 — REST Client: Quiz Game + Leaderboard (Modules + Fetch) [#10](https://github.com/ckluke1/csci4208-portfolio-2025/issues/10) | `lab-06` | open |
+| Lab-06 — REST Client: Quiz Game + Leaderboard (Modules + Fetch) [#10](https://github.com/ckluke1/csci4208-portfolio-2025/issues/10) | `lab-06` | closed |
 | Project-0 — Set up Repo, Project Board, Actions & Pages [#6](https://github.com/ckluke1/csci4208-portfolio-2025/issues/6) | `project-00` | closed |
 | Project-01 — Interactive Game in HTML & CSS [#7](https://github.com/ckluke1/csci4208-portfolio-2025/issues/7) | `project-01` | open |
 | Project-02 — Sprint 3: Full Feature Set & Polish [#13](https://github.com/ckluke1/csci4208-portfolio-2025/issues/13) | `project-02` | open |
