@@ -31,7 +31,8 @@
 | Lab-02 — CSS: Crash Course [#2](https://github.com/ckluke1/csci4208-portfolio-2025/issues/2) | `lab-02` | closed |
 | Lab-03 — Bootstrap: Responsive Portfolio [#3](https://github.com/ckluke1/csci4208-portfolio-2025/issues/3) | `lab-03` | closed |
 | Lab-04 — JavaScript Basics: Hi–Lo Game (MVP → MVC) [#4](https://github.com/ckluke1/csci4208-portfolio-2025/issues/4) | `lab-04` | closed |
-| Lab-05 (Alt) — JavaScript OOP + Phaser: Platformer Game [#22](https://github.com/ckluke1/csci4208-portfolio-2025/issues/22) | `lab-05` | open |
+| Lab-05 — JavaScript OOP + Phaser: Dodger Game [#23](https://github.com/ckluke1/csci4208-portfolio-2025/issues/23) | `lab-05` | open |
+| Lab-05 — JavaScript OOP + Phaser: Dodger Game [#22](https://github.com/ckluke1/csci4208-portfolio-2025/issues/22) | `lab-05` | open |
 | Lab-05 — JavaScript OOP + Phaser: Dodger Game [#21](https://github.com/ckluke1/csci4208-portfolio-2025/issues/21) | `lab-05` | open |
 | Lab-05 — JavaScript OOP + Phaser: Dodger Game [#20](https://github.com/ckluke1/csci4208-portfolio-2025/issues/20) | `lab-05` | open |
 | Lab-05 — JavaScript OOP + Phaser: Dodger Game [#19](https://github.com/ckluke1/csci4208-portfolio-2025/issues/19) | `lab-05` | open |
@@ -43,6 +44,7 @@
 | Lab-05 — JavaScript OOP + Phaser: Dodger Game [#9](https://github.com/ckluke1/csci4208-portfolio-2025/issues/9) | `lab-05` | closed |
 | Lab-05 — JavaScript OOP + Phaser: Dodger Game [#5](https://github.com/ckluke1/csci4208-portfolio-2025/issues/5) | `lab-05` | closed |
 | Lab-06 — REST Client: Quiz Game + Leaderboard (Modules + Fetch) [#10](https://github.com/ckluke1/csci4208-portfolio-2025/issues/10) | `lab-06` | closed |
+| Lab-07 — Browser Data Layer: Mock Document DB [#25](https://github.com/ckluke1/csci4208-portfolio-2025/issues/25) | `lab-07` | open |
 | Project-0 — Set up Repo, Project Board, Actions & Pages [#6](https://github.com/ckluke1/csci4208-portfolio-2025/issues/6) | `project-00` | closed |
 | Project-01 — Interactive Game in HTML & CSS [#7](https://github.com/ckluke1/csci4208-portfolio-2025/issues/7) | `project-01` | open |
 | Project-02 — Sprint 3: Full Feature Set & Polish [#13](https://github.com/ckluke1/csci4208-portfolio-2025/issues/13) | `project-02` | open |
