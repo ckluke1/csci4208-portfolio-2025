@@ -1,0 +1,9 @@
+{
+  "name": "minesweeper-spa",
+  "version": "1.0.0",
+  "description": "Thick-client Minesweeper SPA for CSCI 4208 project",
+  "scripts": {
+    "dev": "npx http-server . -c-1 -o"
+  },
+  "dependencies": {}
+}
