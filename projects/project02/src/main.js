@@ -11,7 +11,11 @@ function bootFromLocal() {
   const persisted = loadPersistedState();
   if (!persisted) return;
   const patch = {};
-  if (persisted.settings) patch.settings = persisted.settings;
+  if (persisted.settings) {
+    const settings = { ...persisted.settings };
+    if (settings.animateMines === undefined) settings.animateMines = true;
+    patch.settings = settings;
+  }
   if (persisted.game) patch.game = persisted.game;
   setState(patch);
 }
@@ -30,22 +34,53 @@ async function bootNetworking() {
   // High scores
   try {
     setState({ highScoresStatus: 'loading' });
-    // Merge local and remote
+    // Merge local and remote, but only include standard categories
+    function getCategory(rows, cols, mines) {
+      if (rows === 9 && cols === 9 && mines === 10) return 'easy';
+      if (rows === 16 && cols === 16 && mines === 40) return 'medium';
+      if (rows === 16 && cols === 30 && mines === 99) return 'hard';
+      return 'custom';
+    }
+
     const remote = await fetchHighScores();
     const local = JSON.parse(localStorage.getItem('minesweeper-local-highscores') || '[]');
-    const merged = [...remote, ...local]
+
+    const normalize = (entry) => {
+      if (!entry) return null;
+      const e = { ...entry };
+      if (!e.category) e.category = getCategory(e.rows, e.cols, e.mines);
+      return e;
+    };
+
+    const merged = [...(remote || []), ...(local || [])]
+      .map(normalize)
+      .filter(Boolean)
+      .filter((e) => ['easy', 'medium', 'hard'].includes(e.category))
       .sort((a, b) => a.timeSeconds - b.timeSeconds)
       .slice(0, 20);
+
     setState({ highScoresStatus: 'success', highScores: merged });
   } catch (err) {
     console.warn(err);
     const local = JSON.parse(localStorage.getItem('minesweeper-local-highscores') || '[]');
-    setState({ highScoresStatus: 'error', highScoresError: err.message, highScores: local });
+    // Filter local to standard categories
+    function getCategory(rows, cols, mines) {
+      if (rows === 9 && cols === 9 && mines === 10) return 'easy';
+      if (rows === 16 && cols === 16 && mines === 40) return 'medium';
+      if (rows === 16 && cols === 30 && mines === 99) return 'hard';
+      return 'custom';
+    }
+    const normalizedLocal = (local || [])
+      .map((e) => ({ ...e, category: e.category || getCategory(e.rows, e.cols, e.mines) }))
+      .filter((e) => ['easy', 'medium', 'hard'].includes(e.category))
+      .sort((a, b) => a.timeSeconds - b.timeSeconds)
+      .slice(0, 20);
+
+    setState({ highScoresStatus: 'error', highScoresError: err.message, highScores: normalizedLocal });
   }
 }
 
 function persistOnChange(state) {
-  // Persist key parts of state
   savePersistedState({
     settings: state.settings,
     game: state.game

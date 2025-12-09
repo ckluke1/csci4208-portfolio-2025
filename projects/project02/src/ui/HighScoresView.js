@@ -16,17 +16,32 @@ export function renderHighScores(root) {
     container.appendChild(h('p', {}, 'Could not load global high scores. Showing local scores if available.'));
   }
 
-  const list = h('ol', {});
-  (state.highScores || []).forEach((hs) => {
-    const label = `${hs.name || 'Anonymous'} — ${formatSeconds(hs.timeSeconds)} (${hs.rows}x${hs.cols}, ${hs.mines} mines)`;
-    list.appendChild(h('li', {}, label));
-  });
+  // Group by category: easy, medium, hard
+  const groups = {
+    easy: (state.highScores || []).filter((s) => s.category === 'easy'),
+    medium: (state.highScores || []).filter((s) => s.category === 'medium'),
+    hard: (state.highScores || []).filter((s) => s.category === 'hard')
+  };
 
-  if (!state.highScores || state.highScores.length === 0) {
-    container.appendChild(h('p', {}, 'No high scores yet. Play a game to create one!'));
-  } else {
-    container.appendChild(list);
-  }
+  const maybeRenderGroup = (title, items) => {
+    container.appendChild(h('h3', {}, title));
+    if (!items || items.length === 0) {
+      container.appendChild(h('p', {}, 'No scores yet for this difficulty.'));
+      return;
+    }
+    const ol = h('ol', {});
+    items.forEach((hs) => {
+      const label = `${hs.name || 'Anonymous'} — ${formatSeconds(hs.timeSeconds)} (${hs.rows}x${hs.cols}, ${hs.mines} mines)`;
+      ol.appendChild(h('li', {}, label));
+    });
+    container.appendChild(ol);
+  };
+
+  maybeRenderGroup('Easy', groups.easy);
+  maybeRenderGroup('Medium', groups.medium);
+  maybeRenderGroup('Hard', groups.hard);
+
+  container.appendChild(h('p', { className: 'note' }, 'Custom boards are not eligible for high scores.'));
 
   root.appendChild(container);
 }

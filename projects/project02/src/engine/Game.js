@@ -11,9 +11,10 @@ export class Game {
     this.won = false;
     this.startTime = null;
     this.endTime = null;
+    this.explosionOrigin = null;
   }
 
-  handleReveal(row, col) {
+  handleReveal(row, col, options = { revealMinesImmediately: true }) {
     if (this.ended) return;
     if (!this.started) {
       this.board.generate(row, col);
@@ -22,10 +23,17 @@ export class Game {
     }
     const { exploded } = this.board.revealTile(row, col);
     if (exploded) {
+      // mark the tile that caused the explosion so UI can highlight it
+      if (this.board && this.board.tiles && this.board.tiles[row] && this.board.tiles[row][col]) {
+        this.board.tiles[row][col].isExploded = true;
+      }
+      this.explosionOrigin = { row, col };
       this.ended = true;
       this.won = false;
       this.endTime = Date.now();
-      this._revealAllMines();
+      if (options.revealMinesImmediately) {
+        this._revealAllMines();
+      }
     } else if (this.board.allSafeTilesRevealed()) {
       this.ended = true;
       this.won = true;
@@ -63,7 +71,8 @@ export class Game {
       ended: this.ended,
       won: this.won,
       startTime: this.startTime,
-      endTime: this.endTime
+      endTime: this.endTime,
+      explosionOrigin: this.explosionOrigin
     };
   }
 
@@ -75,6 +84,7 @@ export class Game {
     g.won = data.won;
     g.startTime = data.startTime;
     g.endTime = data.endTime;
+    g.explosionOrigin = data.explosionOrigin || null;
     return g;
   }
 }

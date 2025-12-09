@@ -50,7 +50,6 @@ export function renderHome(root) {
           try {
             console.log('HomeView: fetching new image (force)...');
             setState({ quoteStatus: 'loading' });
-            // Force bypassing the cache so repeated clicks get a new image
             const { quote } = await fetchMotivationQuote({ force: true });
             console.log('HomeView: fetched image', quote && quote.content);
             setState({ quoteStatus: "success", quote });

@@ -6,6 +6,7 @@ export class Tile {
     this.isRevealed = false;
     this.isFlagged = false;
     this.adjacentMines = 0;
+    this.isExploded = false;
   }
 
   reveal() {
@@ -27,7 +28,8 @@ export class Tile {
       isMine: this.isMine,
       isRevealed: this.isRevealed,
       isFlagged: this.isFlagged,
-      adjacentMines: this.adjacentMines
+      adjacentMines: this.adjacentMines,
+      isExploded: this.isExploded
     };
   }
 
@@ -37,6 +39,7 @@ export class Tile {
     t.isRevealed = data.isRevealed;
     t.isFlagged = data.isFlagged;
     t.adjacentMines = data.adjacentMines;
+    t.isExploded = data.isExploded || false;
     return t;
   }
 }

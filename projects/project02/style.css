@@ -133,14 +133,12 @@ button:hover {
 /* Minesweeper cells */
 
 .game-grid .cell {
-  
   width: 32px;
   height: 32px;
   font-size: 20px;
   text-align: center;
   border: 0px solid #ffffff;
   font-family: "Press Start 2P", cursive;
-  background: #b2d663;
   padding: 0;
   line-height: 32px;
   display: inline-flex;
@@ -148,20 +146,21 @@ button:hover {
   justify-content: center;
 }
 
+/* Checkerboard backgrounds: unrevealed */
+.game-grid .cell.light:not(.revealed) { background: #b2d663; }
+.game-grid .cell.dark:not(.revealed) { background: #aacf5c; }
 
-.game-grid .cell:nth-child(even) {
-  background: #aacf5c;
-}
+/* Checkerboard backgrounds: revealed */
+.game-grid .cell.light.revealed { background: #d2b99c; }
+.game-grid .cell.dark.revealed { background: #e0c4a2; }
 
-.game-grid .cell.revealed {
-  background: #d2b99c;
-}
-
-.game-grid .cell.revealed:nth-child(even) {
-  background: #e0c4a2;
-}
 .game-grid .cell.mine {
-  background: #ef4444;
+  background: #ef4444 !important;
+}
+
+/* Highlight the specific exploded tile with a stronger border */
+.game-grid .cell.exploded {
+  box-shadow: inset 0 0 0 3px rgba(0,0,0,0.25);
 }
 
 .game-grid .cell.flagged {

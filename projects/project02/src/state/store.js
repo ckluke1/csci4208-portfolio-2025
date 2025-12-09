@@ -12,7 +12,8 @@ const initialState = {
   settings: {
     rows: 9,
     cols: 9,
-    mines: 10
+    mines: 10,
+    animateMines: true
   },
   highScores: [], // {name, timeSeconds, rows, cols, mines, timestamp}
   highScoresStatus: 'idle', // 'idle' | 'loading' | 'success' | 'error'
