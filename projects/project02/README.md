@@ -35,18 +35,6 @@ A fully-featured Minesweeper single-page application built with vanilla JavaScri
 
 ---
 
-## Tech Stack
-
-- **Frontend**: Vanilla JavaScript (ES6 modules)
-- **State Management**: Custom pub/sub store pattern
-- **Persistence**: LocalStorage + JSONBin (remote)
-- **Routing**: Hash-based client-side router
-- **Styling**: Custom CSS with CSS Grid
-- **Public API**: Motivation quote service
-- **Build**: None (native ES modules)
-
----
-
 ## Project Structure
 
 ```
@@ -71,7 +59,7 @@ project02/
 │   ├── services/                 # Data & API layer
 │   │   ├── localStorageService.js
 │   │   ├── jsonbinService.js     # Remote high scores
-│   │   └── publicApi.js          # Motivation quotes
+│   │   └── publicApi.js          
 │   └── utils/
 │       └── dom.js                # DOM helpers
 ├── server/                       # (Optional) Express server
