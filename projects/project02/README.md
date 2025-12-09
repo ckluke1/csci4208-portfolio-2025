@@ -3,6 +3,7 @@
 A fully-featured Minesweeper single-page application built with vanilla JavaScript, featuring multiple difficulty levels, persistent high scores, and smooth animations.
 
 **Live URL:** https://ckluke1.github.io/csci4208-portfolio-2025/projects/project02/index.html
+---
 **Repository:** https://github.com/ckluke1/csci4208-portfolio-2025/tree/main/projects/project02
 
 ---
