@@ -2,7 +2,7 @@ import { subscribe, setState } from './state/store.js';
 import { renderApp } from './ui/AppView.js';
 import { initRouter } from './router.js';
 import { loadPersistedState, savePersistedState } from './services/localStorageService.js';
-import { fetchMotivationQuote } from './services/publicApi.js';
+import { fetchFoxImage } from './services/publicApi.js';
 import { fetchHighScores } from './services/jsonbinService.js';
 
 const root = document.getElementById('app-root');
@@ -21,14 +21,14 @@ function bootFromLocal() {
 }
 
 async function bootNetworking() {
-  // Quote
+  // Fox image
   try {
-    setState({ quoteStatus: 'loading' });
-    const { quote } = await fetchMotivationQuote();
-    setState({ quoteStatus: 'success', quote });
+    setState({ foxImageStatus: 'loading' });
+    const { foxImage } = await fetchFoxImage();
+    setState({ foxImageStatus: 'success', foxImage });
   } catch (err) {
     console.warn(err);
-    setState({ quoteStatus: 'error', quoteError: err.message });
+    setState({ foxImageStatus: 'error', foxImageError: err.message });
   }
 
   // High scores

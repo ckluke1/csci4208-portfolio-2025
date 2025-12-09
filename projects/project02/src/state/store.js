@@ -5,9 +5,9 @@ const listeners = new Set();
 // Initial state
 const initialState = {
   view: 'home', // 'home' | 'game' | 'settings' | 'highscores'
-  quote: null, // from public API
-  quoteStatus: 'idle', // 'idle' | 'loading' | 'success' | 'error'
-  quoteError: null,
+  foxImage: null, // from public API
+  foxImageStatus: 'idle', // 'idle' | 'loading' | 'success' | 'error'
+  foxImageError: null,
   game: null, // Game instance serialized
   settings: {
     rows: 9,

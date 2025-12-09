@@ -1,35 +1,35 @@
 import { h, clearChildren } from '../utils/dom.js';
 import { setState, getState } from '../state/store.js';
-import { fetchMotivationQuote } from '../services/publicApi.js';
+import { fetchFoxImage } from '../services/publicApi.js';
 
 export function renderHome(root) {
   const state = getState();
   clearChildren(root);
   // If we haven't attempted to load an image yet, start one automatically
-  if (state.quoteStatus === 'idle') {
+  if (state.foxImageStatus === 'idle') {
     // fire-and-forget fetch to populate state; render cycle will update
     (async () => {
       try {
-        setState({ quoteStatus: 'loading' });
-        const { quote } = await fetchMotivationQuote();
-        setState({ quoteStatus: 'success', quote });
+        setState({ foxImageStatus: 'loading' });
+        const { foxImage } = await fetchFoxImage();
+        setState({ foxImageStatus: 'success', foxImage });
       } catch (err) {
         console.warn('Failed to fetch image on load', err);
-        setState({ quoteStatus: 'error', quoteError: err.message });
+        setState({ foxImageStatus: 'error', foxImageError: err.message });
       }
     })();
   }
  
   let imageNode = null;
-  if (state.quoteStatus === 'loading') {
-    imageNode = h('p', { className: 'quote-loading' }, 'Loading image...');
-  } else if (state.quoteStatus === 'error') {
-    imageNode = h('p', { className: 'quote-error' }, 'Image unavailable');
-  } else if (state.quote && state.quote.content) {
+  if (state.foxImageStatus === 'loading') {
+    imageNode = h('p', { className: 'fox-loading' }, 'Loading fox...');
+  } else if (state.foxImageStatus === 'error') {
+    imageNode = h('p', { className: 'fox-error' }, 'Fox unavailable');
+  } else if (state.foxImage && state.foxImage.content) {
     imageNode = h('div', { className: 'random-image' },
-      h('img', { src: state.quote.content, alt: state.quote.author || 'Random image', style: 'max-width:100%; height:auto; border-radius:8px;' }),
-      h('div', { className: 'image-caption' }, state.quote.author || ''),
-      h('div', { className: 'image-link' }, h('a', { href: state.quote.content, target: '_blank' }, 'Open image in new tab'))
+      h('img', { src: state.foxImage.content, alt: state.foxImage.author || 'Random fox', style: 'max-width:100%; height:auto; border-radius:8px;' }),
+      h('div', { className: 'image-caption' }, state.foxImage.author || ''),
+      h('div', { className: 'image-link' }, h('a', { href: state.foxImage.content, target: '_blank' }, 'Open image in new tab'))
     );
   } else {
     imageNode = h('p', {}, '');
@@ -49,13 +49,13 @@ export function renderHome(root) {
         onClick: async () => {
           try {
             console.log('HomeView: fetching new image (force)...');
-            setState({ quoteStatus: 'loading' });
-            const { quote } = await fetchMotivationQuote({ force: true });
-            console.log('HomeView: fetched image', quote && quote.content);
-            setState({ quoteStatus: "success", quote });
+            setState({ foxImageStatus: 'loading' });
+            const { foxImage } = await fetchFoxImage({ force: true });
+            console.log('HomeView: fetched image', foxImage && foxImage.content);
+            setState({ foxImageStatus: "success", foxImage });
           } catch (err) {
             console.warn('Failed to fetch image', err);
-            setState({ quoteStatus: 'error', quoteError: err.message });
+            setState({ foxImageStatus: 'error', foxImageError: err.message });
           }
         }
       }, 'New Image'),
