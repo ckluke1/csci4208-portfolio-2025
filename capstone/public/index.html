@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collaborative Whiteboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-left">
+                <h1>Collaborative Whiteboard</h1>
+                <div class="connection-status">
+                    <span class="status-indicator" id="statusIndicator"></span>
+                    <span id="connectionStatus">Connecting...</span>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="user-info">
+                    <input type="text" id="userNameInput" class="user-name-input" placeholder="Your name" maxlength="20">
+                    <div class="user-color" id="userColor"></div>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <!-- Vertical Icon Toolbar -->
+            <aside class="toolbar-vertical draggable" id="verticalToolbar">
+                <button class="tool-icon active" data-tool="pen" title="Pen (P)">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 19l7-7 3 3-7 7-3-3z"/>
+                        <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/>
+                        <path d="M2 2l7.586 7.586"/>
+                    </svg>
+                </button>
+                <button class="tool-icon" data-tool="eraser" title="Eraser (E)">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20 20H7L3 16 13 6 20 13V20Z"/>
+                        <path d="M6 13L11 18"/>
+                    </svg>
+                </button>
+                <button class="tool-icon" data-tool="line" title="Line (L)">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="5" y1="19" x2="19" y2="5"/>
+                    </svg>
+                </button>
+                <button class="tool-icon" data-tool="rectangle" title="Rectangle (R)">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="18" height="18" rx="2"/>
+                    </svg>
+                </button>
+                <button class="tool-icon" data-tool="circle" title="Circle (C)">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="9"/>
+                    </svg>
+                </button>
+                <button class="tool-icon" data-tool="text" title="Text (T)">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="4 7 4 4 20 4 20 7"/>
+                        <line x1="9" y1="20" x2="15" y2="20"/>
+                        <line x1="12" y1="4" x2="12" y2="20"/>
+                    </svg>
+                </button>
+                
+                <div class="toolbar-divider"></div>
+                
+                <!-- Color Picker Icon -->
+                <button class="tool-icon" id="colorPickerBtn" title="Color">
+                    <input type="color" id="colorPicker" value="#000000">
+                </button>
+                
+                <div class="toolbar-divider"></div>
+                
+                <!-- More options button -->
+                <button class="tool-icon" id="moreOptionsBtn" title="More Options">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="1"/>
+                        <circle cx="12" cy="5" r="1"/>
+                        <circle cx="12" cy="19" r="1"/>
+                    </svg>
+                </button>
+            </aside>
+
+            <!-- Canvas Area -->
+            <div class="canvas-wrapper">
+                <canvas id="canvas"></canvas>
+            </div>
+
+            <!-- Sidebar - Users -->
+            <aside class="sidebar right-sidebar">
+                <div class="sidebar-section">
+                    <h3>Options</h3>
+                    <div class="option-group">
+                        <label for="brushSize">Brush Size:</label>
+                        <input type="range" id="brushSize" min="1" max="50" value="3">
+                        <span id="brushSizeValue">3</span>
+                    </div>
+                    <div class="option-group">
+                        <label>
+                            <input type="checkbox" id="fillShape"> Fill shapes
+                        </label>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <h3>Actions</h3>
+                    <button id="clearBtn" class="action-btn danger">
+                        Clear Board
+                    </button>
+                    <button id="downloadBtn" class="action-btn">
+                        Download
+                    </button>
+                </div>
+
+                <div class="sidebar-section">
+                    <h3>Save & Load</h3>
+                    <div class="option-group">
+                        <input type="text" id="whiteboardName" placeholder="Whiteboard name" maxlength="30">
+                        <button id="saveBtn" class="action-btn primary">
+                            Save
+                        </button>
+                    </div>
+                    <div class="option-group">
+                        <select id="loadSelect">
+                            <option value="">Select to load...</option>
+                        </select>
+                        <button id="loadBtn" class="action-btn primary">
+                            <span>📂</span> Load
+                        </button>
+                    </div>
+                    <button id="deleteBtn" class="action-btn danger">
+                        <span>🗑️</span> Delete
+                    </button>
+                </div>
+
+                <div class="sidebar-section">
+                    <h3>Active Users</h3>
+                    <div class="users-list" id="usersList">
+                        <div class="no-users">No users online</div>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <h3>Notifications</h3>
+                    <div class="notifications-list" id="notificationsList">
+                        <div class="notification notification-info">
+                            <span>Connected to server ✓</span>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Collaborative Whiteboard • Real-time Updates • Press <kbd>H</kbd> for Help</p>
+        </footer>
+    </div>
+
+    <!-- Help Modal -->
+    <div id="helpModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Keyboard Shortcuts</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <table class="shortcuts-table">
+                    <tr>
+                        <td><kbd>P</kbd></td>
+                        <td>Pen Tool</td>
+                        <td><kbd>E</kbd></td>
+                        <td>Eraser</td>
+                    </tr>
+                    <tr>
+                        <td><kbd>L</kbd></td>
+                        <td>Line Tool</td>
+                        <td><kbd>R</kbd></td>
+                        <td>Rectangle</td>
+                    </tr>
+                    <tr>
+                        <td><kbd>C</kbd></td>
+                        <td>Circle</td>
+                        <td><kbd>Ctrl+Z</kbd></td>
+                        <td>Clear (TODO)</td>
+                    </tr>
+                    <tr>
+                        <td><kbd>H</kbd></td>
+                        <td>Show This Help</td>
+                        <td><kbd>Esc</kbd></td>
+                        <td>Close Modal</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" style="padding-top: 15px;"><strong>Drawing Tips:</strong></td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">• Click and drag to draw with pen or eraser</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">• Use shape tools to draw: click, drag, release</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">• Toggle "Fill shapes" to fill circles and rectangles</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Board Tabs -->
+    <div class="board-tabs-container">
+        <div class="board-tabs" id="boardTabs">
+            <button class="board-tab active" data-board="default">Board 1</button>
+        </div>
+        <button class="new-board-btn" id="newBoardBtn" title="New Board">+</button>
+    </div>
+
+    <script src="js/whiteboard.js"></script>
+</body>
+</html>
